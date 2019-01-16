@@ -11,6 +11,6 @@ function addQuestion(question) {
 function receiveQuestion(question) {
   return {
     type: RECEIVE_QUESTIONS,
-    questions
+    question
   }
 }
