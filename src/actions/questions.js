@@ -8,7 +8,7 @@ function addQuestion(question) {
   }
 }
 
-function receiveQuestion(question) {
+export function receiveQuestions(question) {
   return {
     type: RECEIVE_QUESTIONS,
     question
