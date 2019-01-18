@@ -8,9 +8,9 @@ function addQuestion(question) {
   }
 }
 
-export function receiveQuestions(question) {
+export function receiveQuestions(questions) {
   return {
     type: RECEIVE_QUESTIONS,
-    question
+    questions
   }
 }
