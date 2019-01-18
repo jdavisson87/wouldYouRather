@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://www.flaticon.com/premium-icon/icons/svg/147/147132.svg',
+    avatarURL: 'https://image.flaticon.com/icons/svg/145/145867.svg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
