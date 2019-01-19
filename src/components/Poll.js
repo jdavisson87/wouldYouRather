@@ -5,11 +5,13 @@ class Poll extends Component {
   render() {
     const { question, author } = this.props
     const { id } = question
-    console.log(author.answers[id]==='optionOne')
+    console.log(this.props)
     return(
       <div>
-        <p>{author.name}</p>
-        <p>{author.answers[id]}</p>
+        <h3>Would You Rather...</h3>
+        <p>{question.optionOne.text}</p>
+        <p>Or</p>
+        <p>{question.optionTwo.text}</p>
       </div>
     )
   }

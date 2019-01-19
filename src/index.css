@@ -1,3 +1,5 @@
+/*Root Style*/
+
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +18,8 @@ code {
 .center {
   text-align: center;
 }
+
+/*Style for Login Component*/
 
 .login-users {
   list-style: none;
@@ -37,3 +41,15 @@ code {
   border-radius: 25px;
   margin: 10px;
 }
+
+/*Dashboard Component*/
+
+.unanswered-list {
+  list-style: none;
+}
+
+.answered-list {
+  list-style: none;
+}
+
+/*Poll Component*/
