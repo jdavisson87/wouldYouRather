@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Poll from './Poll'
 
 class Dashboard extends Component {
   render() {
@@ -7,9 +8,9 @@ class Dashboard extends Component {
     return (
       <div>
         <ul>
-          {this.props.answered.map(q=>(
-            <li key={q}>
-              {q}
+          {this.props.answered.map(id=>(
+            <li key={id}>
+              <Poll id={id} />
             </li>
           ))}
         </ul>
