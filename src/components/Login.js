@@ -11,7 +11,7 @@ class Login extends Component {
 
   render() {
 
-    const { users, userIds, authedUser } = this.props
+    const { users, authedUser } = this.props // userIds removed from const
     console.log({authedUser})
     return (
       <div>
@@ -36,7 +36,7 @@ class Login extends Component {
 
 function mapStateToProps({ users, authedUser }) {
   return {
-    userIds: Object.keys(users),
+    // userIds: Object.keys(users),
     users,
     authedUser,
   }
