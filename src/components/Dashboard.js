@@ -19,9 +19,10 @@ class Dashboard extends Component {
           </select>
           <ul className='unanswered-list'>
             <h2>UnAnswered List</h2>
+            <h3>What would you rather do?</h3>
             {this.props.unanswered.map(id=>(
               <li key={id}>
-                <Poll id={id} />
+                <Poll id={id} answered={false}/>
               </li>
             ))}
           </ul>
@@ -36,9 +37,10 @@ class Dashboard extends Component {
               </select>
               <ul className='answered-list'>
                 <h2>Answered List</h2>
+                <h3>What would you rather do?</h3>
                 {this.props.answered.map(id=>(
                   <li key={id}>
-                    <Poll id={id} />
+                    <Poll id={id} answered={true}/>
                   </li>
                 ))}
               </ul>
