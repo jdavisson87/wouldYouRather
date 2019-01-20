@@ -7,7 +7,7 @@ class Dashboard extends Component {
     view: 'unanswered'
   }
   render() {
-    const { answered, unanswered } = this.props
+    const { answered, unanswered, questions } = this.props
 
     if(this.state.view==='unanswered'){
       return (
@@ -17,14 +17,21 @@ class Dashboard extends Component {
             <option value='unanswered'>Unanswered List</option>
             <option value='answered'>Answered List</option>
           </select>
+          <h2>UnAnswered List</h2>
+          <h3>What would you rather do?</h3>
           <ul className='unanswered-list'>
-            <h2>UnAnswered List</h2>
-            <h3>What would you rather do?</h3>
-            {this.props.unanswered.map(id=>(
+
+            {/* {this.props.unanswered.map(id=>(
               <li key={id}>
                 <Poll id={id} answered={false}/>
               </li>
-            ))}
+            ))} */}
+            {this.props.unanswered.map(q=> (
+              <li key={q} className='poll'>
+                <p>{questions[q].optionOne.text}</p>
+                <p>Or</p>
+                <p>{questions[q].optionTwo.text}</p>
+              </li>))}
           </ul>
         </div>
       )}else if(this.state.view==='answered'){
@@ -35,14 +42,20 @@ class Dashboard extends Component {
                 <option value='unanswered'>Unanswered List</option>
                 <option value='answered'>Answered List</option>
               </select>
+              <h2>Answered List</h2>
+              <h3>What would you rather do?</h3>
               <ul className='answered-list'>
-                <h2>Answered List</h2>
-                <h3>What would you rather do?</h3>
-                {this.props.answered.map(id=>(
+                {/* {this.props.answered.map(id=>(
                   <li key={id}>
                     <Poll id={id} answered={true}/>
                   </li>
-                ))}
+                ))} */}
+                {this.props.answered.map(q=> (
+                  <li key={q} className='poll'>
+                    <p>{questions[q].optionOne.text}</p>
+                    <p>Or</p>
+                    <p>{questions[q].optionTwo.text}</p>
+                  </li>))}
               </ul>
             </div>
           )
@@ -64,6 +77,7 @@ function mapStateToProps ({ questions, authedUser }) {
         questions[q].optionTwo.votes.indexOf(authedUser) === -1
       )
       .sort((a,b) => questions[b].timestamp-questions[a].timestamp),
+      questions,
   }
 }
 
