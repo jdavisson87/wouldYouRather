@@ -19,7 +19,7 @@ class Dashboard extends Component {
           </select>
           <h2>UnAnswered List</h2>
           <h3>What would you rather do?</h3>
-          <ul className='unanswered-list'>
+          <ul className='list-group'>
 
             {/* {this.props.unanswered.map(id=>(
               <li key={id}>
@@ -27,10 +27,11 @@ class Dashboard extends Component {
               </li>
             ))} */}
             {this.props.unanswered.map(q=> (
-              <li key={q} className='poll'>
+              <li key={q} className='list-group-item col-md-8 center-block'>
                 <p>{questions[q].optionOne.text}</p>
                 <p>Or</p>
                 <p>{questions[q].optionTwo.text}</p>
+                <button type="button" class="btn btn-primary">See Details</button>
               </li>))}
           </ul>
         </div>
@@ -55,6 +56,7 @@ class Dashboard extends Component {
                     <p>{questions[q].optionOne.text}</p>
                     <p>Or</p>
                     <p>{questions[q].optionTwo.text}</p>
+                    <button>See Details</button>
                   </li>))}
               </ul>
             </div>

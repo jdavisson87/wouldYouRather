@@ -54,6 +54,12 @@ code {
 
 /*Poll Component*/
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .poll {
   width: 100%;
   max-width: 590px;
