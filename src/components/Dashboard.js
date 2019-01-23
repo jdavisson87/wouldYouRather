@@ -8,8 +8,10 @@ class Dashboard extends Component {
   }
   render() {
     const { answered, unanswered, questions } = this.props
+    let questionIds = this.state.view === 'unanswered'
+      ? this.props.unanswered
+      : this.props.answered
 
-    if(this.state.view==='unanswered'){
       return (
         <div>
           <h1>Which list of polls would you like to view?</h1>
@@ -17,10 +19,10 @@ class Dashboard extends Component {
             <option value='unanswered'>Unanswered List</option>
             <option value='answered'>Answered List</option>
           </select>
-          <h2>UnAnswered List</h2>
+          <h2>{this.state.view}</h2>
           <h3>What would you rather do?</h3>
           <ul className='list-group'>
-            {this.props.unanswered.map(q=> (
+            {questionIds.map(q=> (
               // <li key={q} className='list-group-item col-md-8 center-block'>
               //   <p>{questions[q].optionOne.text}</p>
               //   <p>Or</p>
@@ -31,30 +33,7 @@ class Dashboard extends Component {
             ))}
           </ul>
         </div>
-      )}else if(this.state.view==='answered'){
-          return(
-            <div>
-              <h1>Which list of polls would you like to view?</h1>
-              <select className='list-view' onChange={(event)=> this.setState({view: event.target.value})}>
-                <option value='unanswered'>Unanswered List</option>
-                <option value='answered'>Answered List</option>
-              </select>
-              <h2>Answered List</h2>
-              <h3>What would you rather do?</h3>
-              <ul className='list-group'>
-                {this.props.answered.map(q=> (
-                  // <li key={q} className='poll'>
-                  //   <p>{questions[q].optionOne.text}</p>
-                  //   <p>Or</p>
-                  //   <p>{questions[q].optionTwo.text}</p>
-                  //   <button>See Details</button>
-                  // </li>))}
-                  <Poll key={q} id={q}/>
-                ))}
-              </ul>
-            </div>
-          )
-      }
+      )
   }
 }
 
