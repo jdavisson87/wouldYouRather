@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
 import Dashboard from './Dashboard'
-import Poll from './Poll'
 import PollDetail from './PollDetail'
 import LoadingBar from 'react-redux-loading'
 

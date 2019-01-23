@@ -7,10 +7,11 @@ class Dashboard extends Component {
     view: 'unanswered'
   }
   render() {
-    const { answered, unanswered, questions } = this.props
+    const { answered, unanswered } = this.props
+
     let questionIds = this.state.view === 'unanswered'
-      ? this.props.unanswered
-      : this.props.answered
+      ? unanswered
+      : answered
 
       return (
         <div>
