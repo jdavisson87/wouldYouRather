@@ -28,9 +28,7 @@ class Poll extends Component {
                 />)}
               </p>
               <div>
-                <span>
-                  {totalOptOne} votes
-                </span>
+                {totalOptOne} {totalOptOne===1 ? <span>vote</span> : <span>votes</span>}
                 <span className='pull-right'>
                   {(totalOptOne/totalVotes)*100}%
                 </span>
@@ -47,9 +45,7 @@ class Poll extends Component {
                 />)}
               </p>
               <div>
-                <span>
-                  {totalOptTwo} votes
-                </span>
+                {totalOptTwo} {totalOptTwo===1 ? <span>vote</span> : <span>votes</span>}
                 <span className='pull-right'>
                   {(totalOptTwo/totalVotes)*100}%
                 </span>
