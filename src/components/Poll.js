@@ -1,48 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { formatDate } from '../utils/helpers'
 
 class Poll extends Component {
   render() {
-    const { question, author } = this.props
-    const { id } = question
     console.log(this.props)
-    if(this.props.answered===false){
+    if(this.props.question.optionOne.votes.includes(this.props.authedUser) || this.props.question.optionTwo.votes.includes(this.props.authedUser)){
       return(
-        <div className='poll'>
-          <p>{question.optionOne.text}</p>
-          <p>Or</p>
-          <p>{question.optionTwo.text}</p>
-        </div>
+        <li key={this.props.question.id} className='list-group-item col-md-8 center-block'>
+          <p>Author: {this.props.question.author}</p>
+          <p>{formatDate(this.props.question.timestamp)}</p>
+          <p>Option One: {this.props.question.optionOne.text}</p>
+          <p>Option Two: {this.props.question.optionTwo.text}</p>
+        </li>
       )
-    }else if(this.props.answered===true){
+    }else{
       return(
-        <div className='poll'>
-          <span>
-            <p>{question.optionOne.text}</p>
-            <p>Number of Votes:  {question.optionOne.votes.length}</p>
-          </span>
-          <p>Or</p>
-          <span>
-            <p>{question.optionTwo.text}</p>
-            <p>Number of Votes:  {question.optionTwo.votes.length}</p>
-          </span>
-          <p>Total Number of Votes: {(question.optionOne.votes.length)+(question.optionTwo.votes.length)}</p>
-        </div>
+        <li key={this.props.question.id}>Not Answered</li>
       )
     }
+    // return(
+    //     <div>
+    //       {this.props.id}
+    //       {this.props.question.author}
+    //       {this.props.question.optionOne.text}
+    //       {this.props.question.optionTwo.text}
+    //     </div>
+    // )
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }){
-
-  const question = questions[id];
-  const author = question && question.author ? users[question.author] : null;
+function mapStateToProps({ authedUser, users, questions }, { id }) {
+  const question = questions[id]
 
   return {
     authedUser,
-    users,
     question,
-    author
   }
 }
 

@@ -20,19 +20,15 @@ class Dashboard extends Component {
           <h2>UnAnswered List</h2>
           <h3>What would you rather do?</h3>
           <ul className='list-group'>
-
-            {/* {this.props.unanswered.map(id=>(
-              <li key={id}>
-                <Poll id={id} answered={false}/>
-              </li>
-            ))} */}
             {this.props.unanswered.map(q=> (
-              <li key={q} className='list-group-item col-md-8 center-block'>
-                <p>{questions[q].optionOne.text}</p>
-                <p>Or</p>
-                <p>{questions[q].optionTwo.text}</p>
-                <button type="button" class="btn btn-primary">See Details</button>
-              </li>))}
+              // <li key={q} className='list-group-item col-md-8 center-block'>
+              //   <p>{questions[q].optionOne.text}</p>
+              //   <p>Or</p>
+              //   <p>{questions[q].optionTwo.text}</p>
+              //   <button type="button" class="btn btn-primary">See Details</button>
+              // </li>))}
+              <Poll key={q} id={q}/>
+            ))}
           </ul>
         </div>
       )}else if(this.state.view==='answered'){
@@ -45,19 +41,16 @@ class Dashboard extends Component {
               </select>
               <h2>Answered List</h2>
               <h3>What would you rather do?</h3>
-              <ul className='answered-list'>
-                {/* {this.props.answered.map(id=>(
-                  <li key={id}>
-                    <Poll id={id} answered={true}/>
-                  </li>
-                ))} */}
+              <ul className='list-group'>
                 {this.props.answered.map(q=> (
-                  <li key={q} className='poll'>
-                    <p>{questions[q].optionOne.text}</p>
-                    <p>Or</p>
-                    <p>{questions[q].optionTwo.text}</p>
-                    <button>See Details</button>
-                  </li>))}
+                  // <li key={q} className='poll'>
+                  //   <p>{questions[q].optionOne.text}</p>
+                  //   <p>Or</p>
+                  //   <p>{questions[q].optionTwo.text}</p>
+                  //   <button>See Details</button>
+                  // </li>))}
+                  <Poll key={q} id={q}/>
+                ))}
               </ul>
             </div>
           )
