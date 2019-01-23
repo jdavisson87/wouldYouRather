@@ -4,14 +4,34 @@ import { formatDate } from '../utils/helpers'
 
 class Poll extends Component {
   render() {
+    const { users, authedUser, question } = this.props
     console.log(this.props)
-    if(this.props.question.optionOne.votes.includes(this.props.authedUser) || this.props.question.optionTwo.votes.includes(this.props.authedUser)){
+    if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
       return(
         <li key={this.props.question.id} className='list-group-item col-md-8 center-block'>
-          <p>Author: {this.props.question.author}</p>
-          <p>{formatDate(this.props.question.timestamp)}</p>
-          <p>Option One: {this.props.question.optionOne.text}</p>
-          <p>Option Two: {this.props.question.optionTwo.text}</p>
+          <div className='question-info'>
+            <span>Author: {this.props.question.author}</span>
+            <div>{formatDate(this.props.question.timestamp)}</div>
+          </div>
+          <div>
+            <h3>Would you Rather:</h3>
+            <p>
+              {question.optionOne.votes.includes(authedUser) && (<img
+                src={users[authedUser].avatarURL}
+                alt={`Avatar of ${users[authedUser].name}`}
+                className='avatar'
+              />)}
+              Option One: {this.props.question.optionOne.text}
+            </p>
+            <p>
+            {question.optionTwo.votes.includes(authedUser) && (<img
+              src={users[authedUser].avatarURL}
+              alt={`Avatar of ${users[authedUser].name}`}
+              className='avatar'
+            />)}
+            Option Two: {this.props.question.optionTwo.text}
+          </p>
+          </div>
         </li>
       )
     }else{
@@ -36,6 +56,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   return {
     authedUser,
     question,
+    users
   }
 }
 
