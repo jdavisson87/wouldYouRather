@@ -74,8 +74,9 @@ code {
 .poll-detail {
   height: 240px;
 }
+
 .option {
-  border-top: 3px solid black;
+  border: 1px solid black;
   height: 75px;
   margin: auto;
   vertical-align: middle;
