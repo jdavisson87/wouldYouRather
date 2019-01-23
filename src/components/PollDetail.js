@@ -60,7 +60,29 @@ class PollDetail extends Component {
       )
     }else{
       return(
-        <li key={this.props.question.id}>Not Answered</li>
+        <li key={this.props.question.id}>
+          <h3 className='text-center'>Which Would You Rather Do:</h3>
+          <div className='option'>
+            <p>
+              Option One: {this.props.question.optionOne.text}
+              {question.optionOne.votes.includes(authedUser) && (<img
+                src={users[authedUser].avatarURL}
+                alt={`Avatar of ${users[authedUser].name}`}
+                className='avatar pull-right'
+              />)}
+            </p>
+          </div>
+          <div className='option'>
+            <p>
+              Option Two: {this.props.question.optionTwo.text}
+              {question.optionTwo.votes.includes(authedUser) && (<img
+                src={users[authedUser].avatarURL}
+                alt={`Avatar of ${users[authedUser].name}`}
+                className='avatar pull-right'
+              />)}
+            </p>
+          </div>
+        </li>
       )
     }
   }
