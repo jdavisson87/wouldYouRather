@@ -21,6 +21,10 @@ code {
 
 /*Style for Nav Component*/
 
+.nav {
+  margin: 15px;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;
@@ -59,6 +63,9 @@ code {
 
 /*Dashboard Component*/
 
+.dashboard {
+  margin: 15px;
+}
 .unanswered-list {
   list-style: none;
 }
@@ -71,6 +78,7 @@ code {
 
 .poll-question {
   padding: 10px;
+  color: rgb(74, 74, 74);
   display: flex;
   margin: 0 auto;
   border: 1px solid #dad7d7;
@@ -93,7 +101,8 @@ code {
 .option {
   border: 1px solid black;
   height: 75px;
-  margin: auto;
+  margin: 5px;
+  padding: 5px;
   vertical-align: middle;
 }
 

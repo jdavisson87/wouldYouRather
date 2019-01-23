@@ -14,7 +14,7 @@ class Dashboard extends Component {
       : answered
 
       return (
-        <div>
+        <div className='dashboard'>
           <h1>Which list of polls would you like to view?</h1>
           <select className='list-view' onChange={(event)=> this.setState({view: event.target.value})}>
             <option value='unanswered'>Unanswered List</option>
