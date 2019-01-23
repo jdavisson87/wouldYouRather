@@ -19,6 +19,21 @@ code {
   text-align: center;
 }
 
+/*Style for Nav Component*/
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  list-style: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+
 /*Style for Login Component*/
 
 .login-users {
