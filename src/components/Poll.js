@@ -5,32 +5,56 @@ import { formatDate } from '../utils/helpers'
 class Poll extends Component {
   render() {
     const { users, authedUser, question } = this.props
-    console.log(this.props)
+    let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
+    let totalOptOne = question.optionOne.votes.length
+    let totalOptTwo = question.optionTwo.votes.length
+    console.log(this.props, (totalOptOne/totalVotes))
     if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
       return(
-        <li key={this.props.question.id} className='list-group-item col-md-8 center-block'>
+        <li key={this.props.question.id} className='list-group-item col-md-8 center-block poll-detail'>
           <div className='question-info'>
             <span>Author: {this.props.question.author}</span>
-            <div>{formatDate(this.props.question.timestamp)}</div>
+            <span className='pull-right'>{formatDate(this.props.question.timestamp)}</span>
           </div>
-          <div>
-            <h3>Would you Rather:</h3>
-            <p>
-              {question.optionOne.votes.includes(authedUser) && (<img
-                src={users[authedUser].avatarURL}
-                alt={`Avatar of ${users[authedUser].name}`}
-                className='avatar'
-              />)}
-              Option One: {this.props.question.optionOne.text}
-            </p>
-            <p>
-            {question.optionTwo.votes.includes(authedUser) && (<img
-              src={users[authedUser].avatarURL}
-              alt={`Avatar of ${users[authedUser].name}`}
-              className='avatar'
-            />)}
-            Option Two: {this.props.question.optionTwo.text}
-          </p>
+          <div className='options'>
+            <h3 className='text-center'>Would you Rather:</h3>
+            <div className='option'>
+              <p>
+                Option One: {this.props.question.optionOne.text}
+                {question.optionOne.votes.includes(authedUser) && (<img
+                  src={users[authedUser].avatarURL}
+                  alt={`Avatar of ${users[authedUser].name}`}
+                  className='avatar pull-right'
+                />)}
+              </p>
+              <div>
+                <span>
+                  {totalOptOne} votes
+                </span>
+                <span className='pull-right'>
+                  {(totalOptOne/totalVotes)*100}%
+                </span>
+              </div>
+
+            </div>
+            <div className='option'>
+              <p>
+                Option Two: {this.props.question.optionTwo.text}
+                {question.optionTwo.votes.includes(authedUser) && (<img
+                  src={users[authedUser].avatarURL}
+                  alt={`Avatar of ${users[authedUser].name}`}
+                  className='avatar pull-right'
+                />)}
+              </p>
+              <div>
+                <span>
+                  {totalOptTwo} votes
+                </span>
+                <span className='pull-right'>
+                  {(totalOptTwo/totalVotes)*100}%
+                </span>
+              </div>
+            </div>
           </div>
         </li>
       )

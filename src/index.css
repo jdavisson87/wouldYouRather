@@ -60,6 +60,20 @@ code {
   margin-right: auto;
 }
 
+.poll-detail {
+  height: 240px;
+}
+.option {
+  border-top: 3px solid black;
+  height: 75px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.pull-right {
+  float: right !important;
+}
+
 .poll {
   width: 100%;
   max-width: 590px;
