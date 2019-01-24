@@ -34,8 +34,8 @@ code {
   list-style: none;
 }
 
-.nav li:first-child {
-  padding-left: 0;
+.nav li {
+  padding-left: 20px;
 }
 
 

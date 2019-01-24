@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class Nav extends Component {
   render() {
-    const { authedUser, users } = this.props
+    const { authedUser, dispatch, users } = this.props
     return (
       <div>
         <nav className='nav'>
@@ -14,6 +15,13 @@ class Nav extends Component {
                 Home
               </NavLink>
             </li>
+            {authedUser !== null && (<li>
+              <NavLink to='/' exact activeClassName='active' onClick={()=> {
+                dispatch(setAuthedUser(null))
+              }}>
+                Logout
+              </NavLink>
+            </li>)}
           </ul>
           {authedUser !== null && (<span className='col-md-3 text-right'>
             <img

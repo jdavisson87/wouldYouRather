@@ -20,16 +20,10 @@ class Dashboard extends Component {
             <option value='unanswered'>Unanswered List</option>
             <option value='answered'>Answered List</option>
           </select>
-          <h2>{this.state.view}</h2>
-          <h3>What would you rather do?</h3>
+          <h2>What would you rather do?</h2>
+          <h4>Click on the poll to see more details</h4>
           <ul className='list-group'>
             {questionIds.map(q=> (
-              // <li key={q} className='list-group-item col-md-8 center-block'>
-              //   <p>{questions[q].optionOne.text}</p>
-              //   <p>Or</p>
-              //   <p>{questions[q].optionTwo.text}</p>
-              //   <button type="button" class="btn btn-primary">See Details</button>
-              // </li>))}
               <Poll key={q} id={q}/>
             ))}
           </ul>
