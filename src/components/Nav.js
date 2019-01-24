@@ -15,13 +15,6 @@ class Nav extends Component {
                 Home
               </NavLink>
             </li>
-            {authedUser !== null && (<li>
-              <NavLink to='/' exact activeClassName='active' onClick={()=> {
-                dispatch(setAuthedUser(null))
-              }}>
-                Logout
-              </NavLink>
-            </li>)}
           </ul>
           {authedUser !== null && (<span className='col-md-3 text-right'>
             <img
@@ -30,6 +23,11 @@ class Nav extends Component {
               className='avatar'
             />
             <span>{authedUser}</span>
+            <NavLink to='/' exact activeClassName='active' onClick={()=> {
+              dispatch(setAuthedUser(null))
+            }}>
+              Logout
+            </NavLink>
           </span>)}
         </nav>
       </div>

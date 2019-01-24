@@ -19,6 +19,10 @@ code {
   text-align: center;
 }
 
+.active {
+  font-weight: bold;
+}
+
 /*Style for Nav Component*/
 
 .nav {
