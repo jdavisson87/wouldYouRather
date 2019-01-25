@@ -7,6 +7,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import PollDetail from './PollDetail'
 import Leaderboard from './Leaderboard'
+import AddQuestion from './AddQuestion'
 import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/question/:id' component={PollDetail} />
                   <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/add' component={AddQuestion} />
                 </div>
                 }
           </div>

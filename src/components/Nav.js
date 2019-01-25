@@ -10,7 +10,7 @@ class Nav extends Component {
       <div>
         <nav className='nav'>
           <ul className='nav-ul row'>
-            <li className='col-md-3'>
+            <li className='col-md-2'>
               <NavLink to='/' exact activeClassName='active'>
                 Home
               </NavLink>
@@ -20,20 +20,25 @@ class Nav extends Component {
                 Leaderboard
               </NavLink>
             </li>
+            <li className='col-md-6'>
+              <NavLink to='/add' exact activeClassName='active'>
+                Add Question
+              </NavLink>
+            </li>
+            {authedUser !== null && (<li className='logged-in col-md-3 text-right'>
+              <img
+                src={users[authedUser].avatarURL}
+                alt={`Avatar of ${users[authedUser].name}`}
+                className='avatar'
+              />
+              <span>{users[authedUser].name}</span>
+              <NavLink to='/' exact activeClassName='active' onClick={()=> {
+                dispatch(setAuthedUser(null))
+              }}>
+                Logout
+              </NavLink>
+            </li>)}
           </ul>
-          {authedUser !== null && (<span className='logged-in col-md-8 text-right'>
-            <img
-              src={users[authedUser].avatarURL}
-              alt={`Avatar of ${users[authedUser].name}`}
-              className='avatar'
-            />
-            <span>{users[authedUser].name}</span>
-            <NavLink to='/' exact activeClassName='active' onClick={()=> {
-              dispatch(setAuthedUser(null))
-            }}>
-              Logout
-            </NavLink>
-          </span>)}
         </nav>
       </div>
     )
