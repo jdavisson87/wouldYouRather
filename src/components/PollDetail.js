@@ -5,14 +5,13 @@ import { formatDate } from '../utils/helpers'
 class PollDetail extends Component {
   render() {
     const { users,
-      authedUser,
       question,
+      authedUser,
       totalVotes,
       totalOptOne,
       totalOptTwo, } = this.props
 
-
-    if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
+  if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
       return(
         <li key={question.id} className='list-group-item col-md-8 center-block poll-detail'>
           <div className='question-info'>

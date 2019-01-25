@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { users, leaders } = this.props
+    const { leaders } = this.props
    leaders.sort((a,b) => b.total-a.total)
     console.log('leaders', leaders)
     return(
@@ -17,7 +16,7 @@ class Leaderboard extends Component {
         </div>
         <ul className='leaderboard col-md-12'>
           {leaders.map(leader=>(
-            <li key={leader.id} className='row'>
+            <li key={leader.id} className='row leader-entry'>
               <span className='col-md-3 text-center'>
                 {leader.user}
               </span>
@@ -44,6 +43,7 @@ function mapStateToProps({ users }) {
     let numbAsk= Object.keys(users[user].answers).length
     let total = numbQuest + numbAsk
     let id= users[user].id
+    user=users[user].name
     return {user,
       id,
       numbQuest,
@@ -52,7 +52,6 @@ function mapStateToProps({ users }) {
     }
   })
   return{
-    users,
     leaders,
   }
 }
