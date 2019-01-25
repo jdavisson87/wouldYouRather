@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Nav from './Nav'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import PollDetail from './PollDetail'
+import Leaderboard from './Leaderboard'
 import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
               : <div>
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/question/:id' component={PollDetail} />
+                  <Route path='/leaderboard' component={Leaderboard} />
                 </div>
                 }
           </div>

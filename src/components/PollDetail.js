@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
-import Poll from './Poll'
 
 class PollDetail extends Component {
   render() {
-    console.log('poll detail props', this.props)
-    const { users, authedUser, question, id } = this.props
-    let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
-    let totalOptOne = question.optionOne.votes.length
-    let totalOptTwo = question.optionTwo.votes.length
+    const { users,
+      authedUser,
+      question,
+      totalVotes,
+      totalOptOne,
+      totalOptTwo, } = this.props
 
-    console.log(this.props)
 
     if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
       return(
-        <li key={this.props.question.id} className='list-group-item col-md-8 center-block poll-detail'>
+        <li key={question.id} className='list-group-item col-md-8 center-block poll-detail'>
           <div className='question-info'>
-            <span>Author: {this.props.question.author}</span>
-            <span className='pull-right'>{formatDate(this.props.question.timestamp)}</span>
+            <span>Author: {question.author}</span>
+            <span className='pull-right'>{formatDate(question.timestamp)}</span>
           </div>
           <div className='options'>
             <h3 className='text-center'>Would you Rather:</h3>
@@ -91,12 +90,18 @@ class PollDetail extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params
   const question = questions[id]
+  let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
+  let totalOptOne = question.optionOne.votes.length
+  let totalOptTwo = question.optionTwo.votes.length
 
   return {
     id,
     authedUser,
     question,
-    users
+    users,
+    totalVotes,
+    totalOptOne,
+    totalOptTwo,
   }
 }
 

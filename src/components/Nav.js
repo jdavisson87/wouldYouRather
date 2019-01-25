@@ -15,6 +15,11 @@ class Nav extends Component {
                 Home
               </NavLink>
             </li>
+            <li>
+              <NavLink to='/leaderboard' exact activeClassName='active'>
+                Leaderboard
+              </NavLink>
+            </li>
           </ul>
           {authedUser !== null && (<span className='col-md-3 text-right'>
             <img
@@ -22,7 +27,7 @@ class Nav extends Component {
               alt={`Avatar of ${users[authedUser].name}`}
               className='avatar'
             />
-            <span>{authedUser}</span>
+            <span>{users[authedUser].name}</span>
             <NavLink to='/' exact activeClassName='active' onClick={()=> {
               dispatch(setAuthedUser(null))
             }}>

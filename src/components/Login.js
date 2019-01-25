@@ -11,7 +11,7 @@ class Login extends Component {
 
   render() {
 
-    const { users, authedUser } = this.props
+    const { users } = this.props
 
     return (
       <div>
@@ -34,10 +34,9 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users }) {
   return {
     users,
-    authedUser,
   }
 }
 

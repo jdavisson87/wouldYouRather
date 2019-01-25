@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 
 class Poll extends Component {
   render() {
-    const { users, authedUser, question, id } = this.props
-    console.log(this.props)
+    const { users, question, id } = this.props
 
     return(
       <Link
@@ -16,6 +15,7 @@ class Poll extends Component {
         <li className='poll-question center-block list-group-item'>
           <div className='pull-right'>
             <span>Asked by {users[question.author].name}</span>
+            <p>{formatDate(question.timestamp)}</p>
             <img
               src={users[question.author].avatarURL}
               alt={`Avatar of ${users[question.author].name}`}
