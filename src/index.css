@@ -28,6 +28,7 @@ code {
 .nav {
   margin: 15px;
   width: 100%;
+  height: 75px;
 }
 
 .nav ul {
@@ -42,6 +43,22 @@ code {
   padding-left: 20px;
 }
 
+.logged-in {
+  position: absolute;
+  right: 15px;
+}
+
+.logged-in img{
+  margin: 15px;
+}
+
+.logged-in span{
+  margin: 15px;
+}
+
+.logged-in NavLink{
+  margin: 20px;
+}
 
 /*Style for Login Component*/
 

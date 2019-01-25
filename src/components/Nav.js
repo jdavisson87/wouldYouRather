@@ -9,19 +9,19 @@ class Nav extends Component {
     return (
       <div>
         <nav className='nav'>
-          <ul className='nav-ul col-md-8'>
-            <li>
+          <ul className='nav-ul row'>
+            <li className='col-md-3'>
               <NavLink to='/' exact activeClassName='active'>
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className='col-md-3'>
               <NavLink to='/leaderboard' exact activeClassName='active'>
                 Leaderboard
               </NavLink>
             </li>
           </ul>
-          {authedUser !== null && (<span className='col-md-3 text-right'>
+          {authedUser !== null && (<span className='logged-in col-md-8 text-right'>
             <img
               src={users[authedUser].avatarURL}
               alt={`Avatar of ${users[authedUser].name}`}

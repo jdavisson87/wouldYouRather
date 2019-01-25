@@ -32,22 +32,6 @@ class Leaderboard extends Component {
               </span>
             </li>
           ))}
-          {/* {Object.keys(users).map(id => (
-            <li key={id} className='row'>
-              <span className='col-md-3 text-center'>
-                {users[id].name}
-              </span>
-              <span className='text-center col-md-3'>
-                {users[id].questions.length}
-              </span>
-              <span className='text-center col-md-3'>
-                {Object.keys(users[id].answers).length}
-              </span>
-              <span className='text-center col-md-3'>
-                {(Object.keys(users[id].answers).length+users[id].questions.length)}
-              </span>
-            </li>
-          ))} */}
         </ul>
       </div>
     )
