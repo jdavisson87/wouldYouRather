@@ -25,7 +25,7 @@ class Nav extends Component {
                 Add Question
               </NavLink>
             </li>
-            {authedUser !== null && (<li className='logged-in col-md-3 text-right'>
+            {authedUser !== null && (<li className='logged-in col-md-5 text-right'>
               <img
                 src={users[authedUser].avatarURL}
                 alt={`Avatar of ${users[authedUser].name}`}

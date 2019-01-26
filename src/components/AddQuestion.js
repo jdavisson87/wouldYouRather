@@ -1,35 +1,49 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class AddQuestion extends Component {
   state = {
-    optionOne: '',
-    optionTwo: '',
+    optionOneText: '',
+    optionTwoText: '',
+    finish: false,
   }
 
     handleChangeOne = e => {
-      const optionOne = e.target.value
+      const optionOneText = e.target.value
       this.setState(() => ({
-        optionOne
+        optionOneText
       }))
     }
 
     handleChangeTwo = e => {
-      const optionTwo = e.target.value
+      const optionTwoText = e.target.value
       this.setState(() => ({
-        optionTwo
+        optionTwoText
       }))
     }
 
     handleSubmit = (event) => {
-      console.log('worked')
       event.preventDefault()
+      const { optionOneText, optionTwoText } = this.state;
+      const { dispatch, id, authedUser} = this.props
+      dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser))
+
+      this.setState(() => ({
+        optionOneText: '',
+        optionTwoText: '',
+        finish: id? false: true
+      }))
+
     }
 
   render() {
-    console.log(this.props, this.state)
+    const { optionOneText, optionTwoText, finish } = this.state
 
-    const { optionOne, optionTwo } = this.state
+    if (finish === true){
+      return <Redirect to='/' />
+    }
 
     return(
       <div>
@@ -37,11 +51,11 @@ class AddQuestion extends Component {
         <form className='new-question' onSubmit={this.handleSubmit}>
           <label className='row'>
             Option One:
-            <input type='text' value={optionOne} onChange={this.handleChangeOne} name='optionOne' />
+            <input type='text' value={optionOneText} onChange={this.handleChangeOne} name='optionOne' />
           </label>
           <label className='row'>
             Option Two:
-            <input type='text' value={optionTwo} onChange={this.handleChangeTwo} name='optionTwo' />
+            <input type='text' value={optionTwoText} onChange={this.handleChangeTwo} name='optionTwo' />
           </label>
           <input className='row center-block' type='submit' value='Submit'/>
         </form>
@@ -50,9 +64,10 @@ class AddQuestion extends Component {
   }
 }
 
-function mapStateToProps({ questions }){
+function mapStateToProps({ questions, authedUser }){
   return {
     questions,
+    authedUser
   }
 }
 
