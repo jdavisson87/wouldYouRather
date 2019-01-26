@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { leaders } = this.props
+    const { leaders, users } = this.props
    leaders.sort((a,b) => b.total-a.total)
-    console.log('leaders', leaders)
+    console.log(users, leaders)
     return(
       <div className='row'>
         <div className='leaderboard-head col-md-12 center-block'>
@@ -39,8 +39,8 @@ class Leaderboard extends Component {
 
 function mapStateToProps({ users }) {
   let leaders = Object.keys(users).map(user=>{
-    let numbQuest= users[user].questions.length
-    let numbAsk= Object.keys(users[user].answers).length
+    let numbAsk= users[user].questions.length
+    let numbQuest= Object.keys(users[user].answers).length
     let total = numbQuest + numbAsk
     let id= users[user].id
     user=users[user].name
@@ -53,6 +53,7 @@ function mapStateToProps({ users }) {
   })
   return{
     leaders,
+    users
   }
 }
 

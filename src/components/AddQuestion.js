@@ -27,8 +27,8 @@ class AddQuestion extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
       const { optionOneText, optionTwoText } = this.state;
-      const { dispatch, id, authedUser} = this.props
-      dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser))
+      const { dispatch, id, author} = this.props
+      dispatch(handleAddQuestion(optionOneText, optionTwoText, author))
 
       this.setState(() => ({
         optionOneText: '',
@@ -39,6 +39,7 @@ class AddQuestion extends Component {
     }
 
   render() {
+
     const { optionOneText, optionTwoText, finish } = this.state
 
     if (finish === true){
@@ -66,8 +67,7 @@ class AddQuestion extends Component {
 
 function mapStateToProps({ questions, authedUser }){
   return {
-    questions,
-    authedUser
+    author: authedUser,
   }
 }
 
