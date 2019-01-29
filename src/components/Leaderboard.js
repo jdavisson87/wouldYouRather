@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { leaders, users } = this.props
-   leaders.sort((a,b) => b.total-a.total)
-    console.log(users, leaders)
+    const { leaders, questions } = this.props
+    console.log(this.props)
     return(
       <div className='row'>
         <div className='leaderboard-head col-md-12 center-block'>
@@ -15,10 +14,10 @@ class Leaderboard extends Component {
           <h3 className='col-md-3 text-center '>Total</h3>
         </div>
         <ul className='leaderboard col-md-12'>
-          {leaders.map(leader=>(
+          {leaders.sort((a,b) => b.total-a.total).map(leader=>(
             <li key={leader.id} className='row leader-entry'>
               <span className='col-md-3 text-center'>
-                {leader.user}
+                {leader.name}
               </span>
               <span className='col-md-3 text-center'>
                 {leader.numbQuest}
@@ -37,23 +36,33 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, questions }) {
   let leaders = Object.keys(users).map(user=>{
-    let numbAsk= users[user].questions.length
-    let numbQuest= Object.keys(users[user].answers).length
-    let total = numbQuest + numbAsk
+    let name=users[user].name
+    let numbAsk = 0//users[user].questions.length
+    let numbQuest = 0//Object.keys(users[user].answers).length
     let id= users[user].id
-    user=users[user].name
-    return {user,
+
+    for(let a in questions){
+      if(questions[a].author === id){
+        numbAsk++
+      }
+      if(questions[a].optionOne.votes.includes(id) || questions[a].optionTwo.votes.includes(id)){
+        numbQuest++
+      }
+    }
+    let total = numbQuest + numbAsk
+
+    return {name,
       id,
       numbQuest,
       numbAsk,
-      total
+      total,
     }
   })
   return{
     leaders,
-    users
+    questions
   }
 }
 

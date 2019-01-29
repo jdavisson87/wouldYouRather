@@ -4,14 +4,12 @@ import { formatDate } from '../utils/helpers'
 
 class PollDetail extends Component {
   render() {
-    const { users,
-      question,
-      authedUser,
-      totalVotes,
-      totalOptOne,
-      totalOptTwo, } = this.props
+    const { users, question, authedUser, } = this.props
 
   if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
+    let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
+    let totalOptOne = question.optionOne.votes.length
+    let totalOptTwo = question.optionTwo.votes.length
       return(
         <li key={question.id} className='list-group-item col-md-8 center-block poll-detail'>
           <div className='question-info'>
@@ -89,18 +87,13 @@ class PollDetail extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params
   const question = questions[id]
-  let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
-  let totalOptOne = question.optionOne.votes.length
-  let totalOptTwo = question.optionTwo.votes.length
+
 
   return {
     id,
     authedUser,
     question,
     users,
-    totalVotes,
-    totalOptOne,
-    totalOptTwo,
   }
 }
 
