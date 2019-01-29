@@ -3,18 +3,17 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { leaders, questions } = this.props
-    console.log(this.props)
+    const { leaders } = this.props
     return(
       <div className='row'>
         <div className='leaderboard-head col-md-12 center-block'>
           <h3 className='col-md-3 text-center'>User</h3>
-          <h3 className='col-md-3 text-center'>Questions answers</h3>
+          <h3 className='col-md-3 text-center'>Questions answered</h3>
           <h3 className='col-md-3 text-center'>Questions asked</h3>
           <h3 className='col-md-3 text-center '>Total</h3>
         </div>
         <ul className='leaderboard col-md-12'>
-          {leaders.sort((a,b) => b.total-a.total).map(leader=>(
+          {leaders.map(leader=>(
             <li key={leader.id} className='row leader-entry'>
               <span className='col-md-3 text-center'>
                 {leader.name}

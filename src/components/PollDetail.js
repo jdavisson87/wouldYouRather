@@ -4,9 +4,11 @@ import { formatDate } from '../utils/helpers'
 
 class PollDetail extends Component {
   render() {
-    const { users, question, authedUser, } = this.props
+    const { users, question, authedUser, id, questions } = this.props
 
-  if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
+  if(Object.keys(questions).includes(id)===false){
+    return <h3 className='text-center'>No question found</h3>
+  }else if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
     let totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
     let totalOptOne = question.optionOne.votes.length
     let totalOptTwo = question.optionTwo.votes.length
@@ -59,24 +61,26 @@ class PollDetail extends Component {
         <li key={this.props.question.id}>
           <h3 className='text-center'>Which Would You Rather Do:</h3>
           <div className='option'>
-            <p>
+            <h4>
               Option One: {this.props.question.optionOne.text}
               {question.optionOne.votes.includes(authedUser) && (<img
                 src={users[authedUser].avatarURL}
                 alt={`Avatar of ${users[authedUser].name}`}
                 className='avatar pull-right'
               />)}
-            </p>
+            </h4>
+            <button className='btn btn-info pull-right'>Vote</button>
           </div>
           <div className='option'>
-            <p>
+            <h4>
               Option Two: {this.props.question.optionTwo.text}
               {question.optionTwo.votes.includes(authedUser) && (<img
                 src={users[authedUser].avatarURL}
                 alt={`Avatar of ${users[authedUser].name}`}
                 className='avatar pull-right'
               />)}
-            </p>
+            </h4>
+            <button className='btn btn-info pull-right'>Vote</button>
           </div>
         </li>
       )
@@ -94,6 +98,7 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     authedUser,
     question,
     users,
+    questions,
   }
 }
 
