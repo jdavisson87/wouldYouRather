@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
+import { handleAddQuestionAnswer } from "../actions/questions";
+
 
 class PollDetail extends Component {
   render() {
-    const { users, question, authedUser, id, questions } = this.props
+    const { users, question, authedUser, id, questions, dispatch } = this.props
 
   if(Object.keys(questions).includes(id)===false){
     return <h3 className='text-center'>No question found</h3>
@@ -69,7 +71,9 @@ class PollDetail extends Component {
                 className='avatar pull-right'
               />)}
             </h4>
-            <button className='btn btn-info pull-right'>Vote</button>
+            <button className='btn btn-info pull-right' onClick={e =>{
+              dispatch(handleAddQuestionAnswer(id, 'optionOne'))
+            }}>Vote</button>
           </div>
           <div className='option'>
             <h4>
@@ -80,7 +84,9 @@ class PollDetail extends Component {
                 className='avatar pull-right'
               />)}
             </h4>
-            <button className='btn btn-info pull-right'>Vote</button>
+            <button className='btn btn-info pull-right' onClick={e =>{
+              dispatch(handleAddQuestionAnswer(id, 'optionTwo'))
+            }}>Vote</button>
           </div>
         </li>
       )
