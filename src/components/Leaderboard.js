@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { leaders } = this.props
+    const { leaders, users } = this.props
     return(
       <div className='row'>
         <div className='leaderboard-head col-md-12 center-block'>
@@ -16,6 +16,11 @@ class Leaderboard extends Component {
           {leaders.map(leader=>(
             <li key={leader.id} className='row leader-entry'>
               <span className='col-md-3 text-center'>
+                <img
+                  src={leader.avatar}
+                  alt={`Avatar of ${leader.name}`}
+                  className='avatar'
+                />
                 {leader.name}
               </span>
               <span className='col-md-3 text-center'>
@@ -41,6 +46,7 @@ function mapStateToProps({ users, questions }) {
     let numbAsk = 0//users[user].questions.length
     let numbQuest = 0//Object.keys(users[user].answers).length
     let id= users[user].id
+    let avatar = users[user].avatarURL
 
     for(let a in questions){
       if(questions[a].author === id){
@@ -57,11 +63,12 @@ function mapStateToProps({ users, questions }) {
       numbQuest,
       numbAsk,
       total,
+      avatar,
     }
   })
   return{
     leaders,
-    questions
+    questions,
   }
 }
 
