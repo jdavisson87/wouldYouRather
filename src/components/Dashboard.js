@@ -23,9 +23,13 @@ class Dashboard extends Component {
           <h2>What would you rather do?</h2>
           <h4>Click on the poll to see more details</h4>
           <ul className='list-group'>
-            {questionIds.map(q=> (
+            {questionIds.length>0 && questionIds.map(q=> (
               <Poll key={q} id={q}/>
             ))}
+            {(this.state.view==='unanswered' && questionIds.length===0) &&
+            <h3>There are no polls to show.  Why not create a poll for everyone to answer?</h3>}
+            {(this.state.view==='answered' && questionIds.length===0) &&
+            <h3>You have not answered any polls yet.</h3>}
           </ul>
         </div>
       )
