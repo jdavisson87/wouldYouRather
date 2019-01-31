@@ -61,15 +61,20 @@ class PollDetail extends Component {
     }else{
       return(
         <li key={this.props.question.id}>
-          <h3 className='text-center'>Which Would You Rather Do:</h3>
+          <h3 className='text-center'>Would You Rather:</h3>
+          <div className='question-info'>
+            <span>Author: {users[question.author].name}
+              <img
+                src={users[question.author].avatarURL}
+                alt={`Avatar of ${users[question.author].name}`}
+                className='avatar'
+              />
+            </span>
+            <span className='pull-right'>{formatDate(question.timestamp)}</span>
+          </div>
           <div className='option'>
             <h4>
               Option One: {this.props.question.optionOne.text}
-              {question.optionOne.votes.includes(authedUser) && (<img
-                src={users[authedUser].avatarURL}
-                alt={`Avatar of ${users[authedUser].name}`}
-                className='avatar pull-right'
-              />)}
             </h4>
             <button className='btn btn-info pull-right' onClick={e =>{
               dispatch(handleAddQuestionAnswer(id, 'optionOne'))
@@ -78,11 +83,6 @@ class PollDetail extends Component {
           <div className='option'>
             <h4>
               Option Two: {this.props.question.optionTwo.text}
-              {question.optionTwo.votes.includes(authedUser) && (<img
-                src={users[authedUser].avatarURL}
-                alt={`Avatar of ${users[authedUser].name}`}
-                className='avatar pull-right'
-              />)}
             </h4>
             <button className='btn btn-info pull-right' onClick={e =>{
               dispatch(handleAddQuestionAnswer(id, 'optionTwo'))
