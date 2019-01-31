@@ -17,7 +17,12 @@ class PollDetail extends Component {
       return(
         <li key={question.id} className='list-group-item col-md-8 center-block poll-detail'>
           <div className='question-info'>
-            <span>Author: {question.author}</span>
+            <span>Author: {users[question.author].name}</span>
+            <img
+              src={users[question.author].avatarURL}
+              alt={`Avatar of ${users[question.author].name}`}
+              className='avatar'
+            />
             <span className='pull-right'>{formatDate(question.timestamp)}</span>
           </div>
           <div className='options'>
@@ -34,7 +39,7 @@ class PollDetail extends Component {
               <div>
                 {totalOptOne} {totalOptOne===1 ? <span>vote</span> : <span>votes</span>}
                 <span className='pull-right'>
-                  {(totalOptOne/totalVotes)*100}%
+                  {((totalOptOne/totalVotes)*100).toFixed(2)}%
                 </span>
               </div>
 
@@ -51,7 +56,7 @@ class PollDetail extends Component {
               <div>
                 {totalOptTwo} {totalOptTwo===1 ? <span>vote</span> : <span>votes</span>}
                 <span className='pull-right'>
-                  {(totalOptTwo/totalVotes)*100}%
+                  {((totalOptTwo/totalVotes)*100).toFixed(2)}%
                 </span>
               </div>
             </div>
