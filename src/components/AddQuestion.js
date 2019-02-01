@@ -10,33 +10,48 @@ class AddQuestion extends Component {
     finish: false,
   }
 
-    handleChangeOne = e => {
+  handleChange = e => {
+    if(e.target.name === 'optionOne'){
       const optionOneText = e.target.value
-      this.setState(() => ({
+      this.setState(()=> ({
         optionOneText
       }))
-    }
-
-    handleChangeTwo = e => {
+    }else if (e.target.name === 'optionTwo'){
       const optionTwoText = e.target.value
       this.setState(() => ({
         optionTwoText
       }))
     }
+  }
 
-    handleSubmit = (event) => {
-      event.preventDefault()
-      const { optionOneText, optionTwoText } = this.state;
-      const { dispatch, id, author} = this.props
-      dispatch(handleAddQuestion(optionOneText, optionTwoText, author))
+  // handleChangeOne = e => {
+  //   const optionOneText = e.target.value
+  //   this.setState(() => ({
+  //     optionOneText
+  //   }))
+  // }
+  //
+  // handleChangeTwo = e => {
+  //   const optionTwoText = e.target.value
+  //   this.setState(() => ({
+  //     optionTwoText
+  //   }))
+  // }
 
-      this.setState(() => ({
-        optionOneText: '',
-        optionTwoText: '',
-        finish: id? false: true
-      }))
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const { optionOneText, optionTwoText } = this.state;
+    const { dispatch, id, author} = this.props
 
-    }
+    dispatch(handleAddQuestion(optionOneText, optionTwoText, author))
+
+    this.setState(() => ({
+      optionOneText: '',
+      optionTwoText: '',
+      finish: id? false: true
+    }))
+
+  }
 
   render() {
 
@@ -52,11 +67,11 @@ class AddQuestion extends Component {
         <form className='new-question' onSubmit={this.handleSubmit}>
           <label className='row'>
             Option One:
-            <input type='text' value={optionOneText} onChange={this.handleChangeOne} name='optionOne' />
+            <input type='text' value={optionOneText} onChange={this.handleChange} name='optionOne' />
           </label>
           <label className='row'>
             Option Two:
-            <input type='text' value={optionTwoText} onChange={this.handleChangeTwo} name='optionTwo' />
+            <input type='text' value={optionTwoText} onChange={this.handleChange} name='optionTwo' />
           </label>
           <input className='row center-block' type='submit' value='Submit'/>
         </form>
