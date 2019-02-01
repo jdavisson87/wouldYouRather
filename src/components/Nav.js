@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
 class Nav extends Component {
+  logoutHandler = () => {
+    this.props.dispatch(setAuthedUser(null))
+    this.props.history.push("/")
+  }
   render() {
     const { authedUser, dispatch, users } = this.props
     return (
@@ -32,11 +37,9 @@ class Nav extends Component {
                 className='avatar'
               />
               <span>{users[authedUser].name}</span>
-              <NavLink to='/' exact activeClassName='active' onClick={()=> {
-                dispatch(setAuthedUser(null))
-              }}>
+              <button onClick={this.logoutHandler}>
                 Logout
-              </NavLink>
+              </button>
             </li>)}
           </ul>
         </nav>
@@ -52,4 +55,4 @@ function mapStateToProps({ authedUser,users }){
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))
