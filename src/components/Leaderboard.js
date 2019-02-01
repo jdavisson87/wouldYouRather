@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { leaders, users } = this.props
+    const { leaders } = this.props
     return(
       <div className='row'>
         <div className='leaderboard-head col-md-12 center-block'>
@@ -68,7 +68,6 @@ function mapStateToProps({ users, questions }) {
   })
   return{
     leaders,
-    questions,
   }
 }
 
