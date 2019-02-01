@@ -6,9 +6,9 @@ import { withRouter } from 'react-router-dom'
 class Login extends Component {
 
   handleSubmit = id => {
-    const { dispatch, history } = this.props;
+    const { dispatch } = this.props;
     dispatch(setAuthedUser(id))
-    // history.push("/")
+    // this.props.history.push("/")
   }
 
   render() {

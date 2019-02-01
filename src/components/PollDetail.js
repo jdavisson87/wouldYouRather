@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
 import { handleAddQuestionAnswer } from "../actions/questions";
 
 
-class PollDetail extends Component {
-  render() {
-    const { users, question, authedUser, id, questions, dispatch } = this.props
+// class PollDetail extends Component {
+//
+//   render() {
+
+function PollDetail(props) {
+    const { users, question, authedUser, id, questions, dispatch } = props
 
   if(Object.keys(questions).includes(id)===false){
     return <h3 className='text-center'>No question found</h3>
@@ -29,7 +32,7 @@ class PollDetail extends Component {
             <h3 className='text-center'>Would you Rather:</h3>
             <div className='option'>
               <p>
-                Option One: {this.props.question.optionOne.text}
+                Option One: {props.question.optionOne.text}
                 {question.optionOne.votes.includes(authedUser) && (<img
                   src={users[authedUser].avatarURL}
                   alt={`Avatar of ${users[authedUser].name}`}
@@ -46,7 +49,7 @@ class PollDetail extends Component {
             </div>
             <div className='option'>
               <p>
-                Option Two: {this.props.question.optionTwo.text}
+                Option Two: {props.question.optionTwo.text}
                 {question.optionTwo.votes.includes(authedUser) && (<img
                   src={users[authedUser].avatarURL}
                   alt={`Avatar of ${users[authedUser].name}`}
@@ -65,7 +68,7 @@ class PollDetail extends Component {
       )
     }else{
       return(
-        <li key={this.props.question.id}>
+        <li key={props.question.id}>
           <h3 className='text-center'>Would You Rather:</h3>
           <div className='question-info'>
             <span>Author: {users[question.author].name}
@@ -79,7 +82,7 @@ class PollDetail extends Component {
           </div>
           <div className='option'>
             <h4>
-              Option One: {this.props.question.optionOne.text}
+              Option One: {props.question.optionOne.text}
             </h4>
             <button className='btn btn-info pull-right' onClick={e =>{
               dispatch(handleAddQuestionAnswer(id, 'optionOne'))
@@ -87,7 +90,7 @@ class PollDetail extends Component {
           </div>
           <div className='option'>
             <h4>
-              Option Two: {this.props.question.optionTwo.text}
+              Option Two: {props.question.optionTwo.text}
             </h4>
             <button className='btn btn-info pull-right' onClick={e =>{
               dispatch(handleAddQuestionAnswer(id, 'optionTwo'))
@@ -97,7 +100,7 @@ class PollDetail extends Component {
       )
     }
   }
-}
+
 
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params

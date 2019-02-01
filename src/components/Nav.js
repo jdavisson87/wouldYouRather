@@ -10,7 +10,7 @@ class Nav extends Component {
     this.props.history.push("/")
   }
   render() {
-    const { authedUser, dispatch, users } = this.props
+    const { authedUser, users } = this.props
     return (
       <div>
         <nav className='nav'>

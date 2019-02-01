@@ -24,20 +24,6 @@ class AddQuestion extends Component {
     }
   }
 
-  // handleChangeOne = e => {
-  //   const optionOneText = e.target.value
-  //   this.setState(() => ({
-  //     optionOneText
-  //   }))
-  // }
-  //
-  // handleChangeTwo = e => {
-  //   const optionTwoText = e.target.value
-  //   this.setState(() => ({
-  //     optionTwoText
-  //   }))
-  // }
-
   handleSubmit = (event) => {
     event.preventDefault()
     const { optionOneText, optionTwoText } = this.state;
