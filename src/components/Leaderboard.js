@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 function Leaderboard(props) {
   const { leaders } = props
+  leaders.sort((a,b,) => b.total-a.total)
+  console.log(leaders)
   return(
     <div className='row'>
       <div className='leaderboard-head col-md-12 center-block'>
