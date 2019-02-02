@@ -5,12 +5,15 @@ import { setAuthedUser } from '../actions/authedUser'
 import { withRouter } from 'react-router-dom'
 
 class Nav extends Component {
+
   logoutHandler = () => {
     this.props.dispatch(setAuthedUser(null))
     this.props.history.push("/")
   }
+
   render() {
     const { authedUser, users } = this.props
+
     return (
       <div>
         <nav className='nav'>

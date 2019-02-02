@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 import Poll from './Poll'
 
 class Dashboard extends Component {
+
   state = {
     view: 'unanswered'
   }
+
   render() {
     const { answered, unanswered } = this.props
 
     let questionIds = this.state.view === 'unanswered'
-      ? unanswered
-      : answered
+      ? unanswered : answered
 
       return (
         <div className='dashboard'>

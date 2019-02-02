@@ -8,7 +8,6 @@ class Login extends Component {
   handleSubmit = id => {
     const { dispatch } = this.props;
     dispatch(setAuthedUser(id))
-    // this.props.history.push("/")
   }
 
   render() {

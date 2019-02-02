@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
-// class Poll extends Component {
-//   render() {
-
 function Poll(props){
 
   const { users, question, id } = props
@@ -32,7 +29,6 @@ function Poll(props){
     </Link>
   )
 }
-
 
 function mapStateToProps({ users, questions }, { id }) {
   const question = questions[id]

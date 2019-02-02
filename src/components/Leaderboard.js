@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-
 function Leaderboard(props) {
   const { leaders } = props
   leaders.sort((a,b,) => b.total-a.total)
-  console.log(leaders)
+
   return(
     <div className='row'>
       <div className='leaderboard-head col-md-12 center-block'>
@@ -41,7 +40,6 @@ function Leaderboard(props) {
   )
 }
 
-
 function mapStateToProps({ users, questions }) {
   let leaders = Object.keys(users).map(user=>{
     let name=users[user].name
@@ -68,6 +66,7 @@ function mapStateToProps({ users, questions }) {
       avatar,
     }
   })
+  
   return{
     leaders,
   }
